@@ -1,0 +1,24 @@
+function SymfonyFileBrowser (field_name, url, type, win) {
+
+    var cmsURL = "{{ url('stfalcon_tinymce_upload_dialog') }}";
+    if (cmsURL.indexOf("?") < 0) {
+        cmsURL = cmsURL + "?type=" + type;
+    }
+    else {
+        cmsURL = cmsURL + "&type=" + type;
+    }
+
+    tinyMCE.activeEditor.windowManager.open({
+        file : cmsURL,
+        title : 'File Browser',
+        width : 420,
+        height : 200,
+        resizable : "yes",
+        inline : "yes",
+        close_previous : "no"
+    }, {
+        window : win,
+        input : field_name
+    });
+    return false;
+}
